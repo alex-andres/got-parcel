@@ -5,3 +5,13 @@ body {
 	background-position: center;
 	background-attachment: fixed;
 }
+
+.brand-logo img {
+	max-height: 64px;
+	height: auto;
+	margin-right: 10px;
+}
+
+.brand-logo span {
+	font-weight: bold;
+}
