@@ -7,11 +7,11 @@ body {
 }
 
 .brand-logo img {
-	max-height: 64px;
+	max-height: 54px;
 	height: auto;
 	margin-right: 10px;
 }
 
-.brand-logo span {
+.text-bold {
 	font-weight: bold;
 }
