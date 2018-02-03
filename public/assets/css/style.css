@@ -45,7 +45,7 @@ body {
 	box-sizing: content-box;
 	margin: 0 auto;
 	border: none;
-	color: #757575;
+	/* color: #757575; */
 	font: normal 82px/normal "Anton", Helvetica, sans-serif;
 	text-align: center;
 	text-transform: uppercase;
