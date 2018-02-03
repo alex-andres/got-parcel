@@ -29,6 +29,7 @@ body {
 
 .width-40 {
 	width: 90% !important;
+	max-width: 200px;
 }
 
 .card {
@@ -45,7 +46,6 @@ body {
 	box-sizing: content-box;
 	margin: 0 auto;
 	border: none;
-	/* color: #757575; */
 	font: normal 82px/normal "Anton", Helvetica, sans-serif;
 	text-align: center;
 	text-transform: uppercase;
@@ -53,4 +53,25 @@ body {
 	text-overflow: clip;
 	letter-spacing: 10px;
 	text-shadow: 2px 2px 0 rgb(238, 238, 238), 4px 4px 0 #757575;
+}
+
+nav {
+	background-color: rgb(178, 158, 128);
+}
+
+.parcels-section-title {
+	color: rgb(130, 158, 178)
+}
+
+.custom-color {
+	background-color: rgb(31, 133, 206);
+}
+
+.icon-full {
+	font-size: 250px;
+	line-height: 312px;
+}
+
+.card-image {
+	min-height: 312px;
 }
