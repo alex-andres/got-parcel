@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+
+		<!-- Document Information -->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<link rel="shortcut icon" href="public/assets/img/favicon.png" type="image/png">
+		<title>Manager Portal</title>
+
+		<!-- CSS Libraries -->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link href="http://fonts.googleapis.com/css?family=Anton" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" integrity="sha256-e22BQKCF7bb/h/4MFJ1a4lTRR2OuAe8Hxa/3tgU5Taw=" crossorigin="anonymous" />
+		<link rel="stylesheet" href="public/assets/css/materialize-stepper.min.css">
+		<link rel="stylesheet" href="public/assets/css/style.css">
+
+		<!-- JS Libraries -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" integrity="sha256-uWtSXRErwH9kdJTIr1swfHFJn/d/WQ6s72gELOHXQGM=" crossorigin="anonymous"></script>
+		<script src="public/assets/js/materialize-stepper.min.js"></script>
+		<script src="public/assets/js/custom.js"></script>
+
+	</head>
+
+	<body>
+
+		<!-- ProfileModal -->
+		<div id="profile_modal" class="modal modal-fixed-footer">
+			<div class="modal-content">
+				<h4>Update Your Profile</h4>
+				<div class="row">
+					<form action="#" class="col s12">
+						<div class="row">
+							<div class="input-field col s6">
+								<input id="first_name" type="text" class="validate">
+								<label for="first_name">First Name</label>
+							</div>
+							<div class="input-field col s6">
+								<input id="last_name" type="text" class="validate">
+								<label for="last_name">Last Name</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s6">
+								<input id="phone_number" type="tel" class="validate">
+								<label for="phone_number">Phone#</label>
+							</div>
+							<div class="input-field col s6">
+								<input id="email" type="email" class="validate">
+								<label for="email">Email</label>
+							</div>
+							<div class="col s6">
+								<input type="checkbox" class="filled-in" id="is_cell" />
+								<label for="is_cell">Mobile</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s6">
+								<input id="password_new" type="password" class="validate">
+								<label for="password_new">New Password</label>
+							</div>
+							<div class="input-field col s6">
+								<input id="password_confirm" type="password" class="validate">
+								<label for="password_confirm">Confirm Password</label>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<a href="#!" class="modal-action modal-close waves-effect waves-light btn red">
+						<i class="material-icons left">cancel</i>Cancel</a>
+				<a href="#!" class="modal-action modal-close waves-effect waves-green btn">
+						<i class="material-icons left">save</i>Save</a>
+			</div>
+		</div>
+
+		<!-- ParcelModal -->
+		<div id="parcel_modal" class="modal">
+			<div class="modal-content">
+				<h4>Scan Parcel</h4>
+				<div class="row">
+					<div class="col s12">
+						<ul class="stepper horizontal">
+							<li class="step active">
+								<div class="step-title waves-effect">Tracking#</div>
+								<div class="step-content">
+									<div class="row">
+										<div class="input-field col s12">
+											<input id="tracking_number" type="text" required>
+											<label for="tracking_number">Tracking#</label>
+										</div>
+									</div>
+									<div class="step-actions">
+										<button class="waves-effect waves-dark btn next-step">Unit#</button>
+									</div>
+								</div>
+							</li>
+							<li class="step">
+								<div class="step-title waves-effect">Unit#</div>
+								<div class="step-content">
+									<div class="row">
+										<div class="input-field col s12">
+											<input id="unit_number" type="text" class="autocomplete validate" required>
+											<label for="unit_number">Unit#</label>
+										</div>
+									</div>
+									<div class="step-actions">
+										<button class="waves-effect waves-dark btn" type="submit">Finish</button>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- NavBar -->
+		<div class="navbar-fixed">
+			<nav class="secondary-color-background">
+				<div class="nav-wrapper container">
+					<a href="#!" class="brand-logo flow-text">
+						<div class="valign-wrapper">
+							<img src="public/assets/img/logo-box@4x.png" alt="GotParcel">
+							<span class="flow-text text-bold">Got Parcel</span>
+						</div>
+					</a>
+					<ul class="right hide-on-med-and-down">
+						<li>
+							<a href="#!">My Parcels</a>
+						</li>
+						<li>
+							<a class="modal-trigger" href="#profile_modal">Update Profile</a>
+						</li>
+						<li>
+							<a href="#!">Log Out</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+
+		<!-- Manager -->
+		<div class="row">
+			<div class="col s12 center primary-color-text retro">
+				<h3>Actions</h3>
+			</div>
+		</div>
+		<div class="row">
+
+			<!-- NewParcel -->
+			<div class="col s4">
+				<a class="modal-trigger" href="#parcel_modal">
+					<div class="medium card hoverable no-select">
+						<div class="card-image card-image-medium primary-color-background center">
+							<i class="material-icons white-text icon-full-medium">add_circle</i>
+						</div>
+						<div class="card-content center">
+							<span class="card-title">New Parcel</span>
+						</div>
+					</div>
+				</a>
+			</div>
+
+			<!-- ActionCard -->
+			<div class="col s4">
+				<a href="#!">
+					<div class="medium card hoverable no-select">
+						<div class="card-image card-image-medium primary-color-background center">
+							<i class="material-icons white-text icon-full-medium">supervisor_account</i>
+						</div>
+						<div class="card-content center">
+							<span class="card-title">Residents</span>
+						</div>
+					</div>
+				</a>
+			</div>
+
+			<!-- ActionCard -->
+			<div class="col s4">
+				<a href="#!">
+					<div class="medium card hoverable no-select">
+						<div class="card-image card-image-medium primary-color-background center">
+							<i class="material-icons white-text icon-full-medium pulse">alarm</i>
+						</div>
+						<div class="card-content center">
+							<span class="card-title">Send Reminder</span>
+						</div>
+					</div>
+				</a>
+			</div>
+
+		</div>
+
+	</body>
+
+</html>
