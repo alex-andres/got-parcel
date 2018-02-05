@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ParcelCard = ({ packages }) => {
+const ParcelCard = ({ carrier, trackingNumber, deliveryDate, pickedUp, pickupDate }) => {
 	return (
 		<div className="row">
 			<div className="col s6">
@@ -8,15 +8,15 @@ const ParcelCard = ({ packages }) => {
 					<div className="card-content">
 						<div className="row mb-0">
 							<div className="col s3">
-								<img src={`assets/img/Carriers/${packages.carrier}.png`} className="width-40 border-round z-depth-5" alt="fedex logo" />
+								<img src={`assets/img/Carriers/${carrier}.png`} className="width-40 border-round z-depth-5" alt="fedex logo" />
 							</div>
 							<div className="col s6">
-								<h5>{packages.carrier}</h5>
-								<p>Tracking#: {packages.trackingNumber}</p>
-								<p>Delivery Date: {packages.deliveryDate}</p>
+								<h5>{carrier}</h5>
+								<p>Tracking#: {trackingNumber}</p>
+								<p>Delivery Date: {deliveryDate}</p>
 							</div>
 							<div className="col s3 center">
-								<i className={'large material-icons text-lighten-2 ' + (packages.pickedUp ? 'green-text' : 'grey-text')}>check_circle</i>
+								<i className={'large material-icons text-lighten-2 ' + (pickedUp ? 'green-text' : 'grey-text')}>check_circle</i>
 							</div>
 						</div>
 					</div>
