@@ -109,3 +109,42 @@ body {
 	letter-spacing: 10px;
 	text-shadow: 2px 2px 0 rgb(238, 238, 238), 4px 4px 0 #757575;
 }
+
+html {
+	line-height: 1.5;
+	font-family: "Roboto", sans-serif !important;
+	font-weight: normal;
+	color: rgba(0, 0, 0, 0.87);
+}
+
+.border-round {
+	border-radius: 100px !important;
+}
+
+.width-40 {
+	width: 90% !important;
+}
+
+.card {
+	overflow: hidden;
+}
+
+.mb-0 {
+	margin-bottom: 0;
+}
+
+.retro {
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+	margin: 0 auto;
+	border: none;
+	/* color: #757575; */
+	font: normal 82px/normal "Anton", Helvetica, sans-serif;
+	text-align: center;
+	text-transform: uppercase;
+	-o-text-overflow: clip;
+	text-overflow: clip;
+	letter-spacing: 10px;
+	text-shadow: 2px 2px 0 rgb(238, 238, 238), 4px 4px 0 #757575;
+}
