@@ -23,7 +23,7 @@ const PastParcels = ({ packages }) => {
 			<div className="row">
 				<div className="col s12 center primary-color-text retro">
 					<div className="divider grey darken-1"></div>
-					<h3>Awaiting Parcels</h3>
+					<h3>Past Parcels</h3>
 				</div>
 			</div>
 			<div className="row">

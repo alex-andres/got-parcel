@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import AwaitingParcels from './components/residentView/awaitingParcels';
 import PastParcels from './components/residentView/pastParcels';
+import NavBar from './components/navBar'
+import ActionCardContainer from './components/managerView/actionCardContainer'
 
 
 //Create a new component. This component should produce some HTML
@@ -20,6 +22,11 @@ class App extends Component {
 			{ "carrier": "USPS", "deliveryDate": "1/25/2018", "pickedUp": true, "pickupDate": "1/4/2018", "trackingNumber": 10848997 },
 			{ "carrier": "FedEx", "deliveryDate": "6/4/2017", "pickedUp": true, "pickupDate": "12/19/2017", "trackingNumber": 14586924 },
 			{ "carrier": "UPS", "deliveryDate": "10/26/2017", "pickedUp": true, "pickupDate": "7/8/2017", "trackingNumber": 17657130 }
+			],
+			iconTitles: [
+				{ icon: 'add_circle', title: 'New Parcel' },
+				{ icon: 'supervisor_account', title: 'Residents' },
+				{ icon: 'alarm', title: 'Send Reminder' }
 			]
 		}
 	}
@@ -27,8 +34,10 @@ class App extends Component {
 	render() {
 		return (
 			<div>
-				<AwaitingParcels packages={this.state.packages} />
-				<PastParcels packages={this.state.packages} />
+				<NavBar />
+				{/* <AwaitingParcels packages={this.state.packages} />
+				<PastParcels packages={this.state.packages} /> */}
+				<ActionCardContainer iconTitles={this.state.iconTitles} />
 			</div>
 		);
 	}

@@ -7,7 +7,7 @@ const ParcelCard = ({ carrier, trackingNumber, deliveryDate, pickedUp, pickupDat
 				<div className="card-content">
 					<div className="row mb-0">
 						<div className="col s3">
-							<img src={`assets/img/Carriers/${carrier}.png`} className="width-40 border-round z-depth-5" alt={`${carrier}logo`} />
+							<img src={`assets/img/Carriers/${carrier}.png`} className="custom-round-image z-depth-5" alt={`${carrier}logo`} />
 						</div>
 						<div className="col s6">
 							<h5>{carrier}</h5>
