@@ -1,6 +1,6 @@
 import React from 'react'
 
-const NavBar = () => {
+const NavBar = ({ user }) => {
 	return (
 		<div className="navbar-fixed">
 			<nav className="secondary-color-background">
