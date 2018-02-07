@@ -5,6 +5,7 @@ import PastParcels from './components/residentView/pastParcels';
 import NavBar from './components/navBar'
 import ActionCardContainer from './components/managerView/actionCardContainer'
 import FloorCardContainer from './components/managerAction/floorCardContainer';
+import HomeContainer from './components/homePage/homeContainer';
 
 
 //Create a new component. This component should produce some HTML
@@ -39,7 +40,8 @@ class App extends Component {
 				{/* <AwaitingParcels packages={this.state.packages} />
 				<PastParcels packages={this.state.packages} /> */}
 				{/* <ActionCardContainer iconTitles={this.state.iconTitles} /> */}
-				<FloorCardContainer />
+				{/* <FloorCardContainer /> */}
+				<HomeContainer />
 			</div>
 		);
 	}
