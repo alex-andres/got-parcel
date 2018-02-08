@@ -1,5 +1,5 @@
 import React from 'react';
-import ParcelCard from './parcelCard'
+import ParcelCard from './parcelCard';
 
 const AwaitingParcels = ({ packages }) => {
 	//create a function that maps the ParcelCard to the Past Parcels container if the parcel object has 

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-class CommentForm extends Component {
+class ParcelModal extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { tracking_number: ‘’, unit_number: ‘’ }
+		this.state = { tracking_number: "", unit_number: "" }
 		this.handleTrackingChange = this.handleTrackingChange.bind(this);
 		this.handleUnitChange = this.handleUnitChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -17,7 +17,6 @@ class CommentForm extends Component {
 	handleSubmit(e) {
 		e.preventDefault();
 		console.log(`tracking number:${this.state.tracking_number}, unit number “${this.state.unit_number}”`)
-		//we will be tying this into the POST method in a bit
 	}
 	render() {
 		return (
@@ -32,8 +31,8 @@ class CommentForm extends Component {
 									<div className="step-content">
 										<div className="row">
 											<div className="input-field col s12">
-												<input id="tracking_number" type="text" required />
-												<label for="tracking_number">Tracking#</label>
+												<input id="tracking_number" type="text" required onChange={(event, newValue) => this.setState({ tracking_number: newValue })} />
+												<label htmlFor="tracking_number">Tracking#</label>
 											</div>
 										</div>
 										<div className="step-actions">
@@ -46,8 +45,8 @@ class CommentForm extends Component {
 									<div className="step-content">
 										<div className="row">
 											<div className="input-field col s12">
-												<input id="unit_number" type="text" className="autocomplete validate" required />
-												<label for="unit_number">Unit#</label>
+												<input id="unit_number" type="text" className="autocomplete validate" required onChange={(event, newValue) => this.setState({ unit_number: newValue })} />
+												<label htmlFor="unit_number">Unit#</label>
 											</div>
 										</div>
 										<div className="step-actions">

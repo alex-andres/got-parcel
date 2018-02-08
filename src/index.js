@@ -6,6 +6,8 @@ import NavBar from './components/navBar'
 import ActionCardContainer from './components/managerView/actionCardContainer'
 import FloorCardContainer from './components/managerAction/floorCardContainer';
 import HomeContainer from './components/homePage/homeContainer';
+import ParcelModal from './components/managerView/parcelModal'
+import UnitCardContainer from './components/managerAction/unitCardContainer'
 
 
 //Create a new component. This component should produce some HTML
@@ -29,7 +31,22 @@ class App extends Component {
 				{ icon: 'add_circle', title: 'New Parcel' },
 				{ icon: 'supervisor_account', title: 'Residents' },
 				{ icon: 'alarm', title: 'Send Reminder' }
+			],
+			info: [
+				{ unitNumber: 1111, firstName: 'John', lastName: 'Doe', phoneNumber: 3101234567, email: 'johnDoe@gmail.com' },
+				{ unitNumber: 1111, firstName: 'John', lastName: 'Doe', phoneNumber: 3101234567, email: 'johnDoe@gmail.com' },
+				{ unitNumber: 1111, firstName: 'John', lastName: 'Doe', phoneNumber: 3101234567, email: 'johnDoe@gmail.com' },
+				{ unitNumber: 1111, firstName: 'John', lastName: 'Doe', phoneNumber: 3101234567, email: 'johnDoe@gmail.com' },
+				{ unitNumber: 1111, firstName: 'John', lastName: 'Doe', phoneNumber: 3101234567, email: 'johnDoe@gmail.com' },
+				{ unitNumber: 1111, firstName: 'John', lastName: 'Doe', phoneNumber: 3101234567, email: 'johnDoe@gmail.com' },
+				{ unitNumber: 1111, firstName: 'John', lastName: 'Doe', phoneNumber: 3101234567, email: 'johnDoe@gmail.com' },
+				{ unitNumber: 1111, firstName: 'John', lastName: 'Doe', phoneNumber: 3101234567, email: 'johnDoe@gmail.com' },
+				{ unitNumber: 1111, firstName: 'John', lastName: 'Doe', phoneNumber: 3101234567, email: 'johnDoe@gmail.com' },
+				{ unitNumber: 1111, firstName: 'John', lastName: 'Doe', phoneNumber: 3101234567, email: 'johnDoe@gmail.com' },
+				{ unitNumber: 1111, firstName: 'John', lastName: 'Doe', phoneNumber: 3101234567, email: 'johnDoe@gmail.com' },
+				{ unitNumber: 1111, firstName: 'John', lastName: 'Doe', phoneNumber: 3101234567, email: 'johnDoe@gmail.com' }
 			]
+
 		}
 	}
 
@@ -41,7 +58,9 @@ class App extends Component {
 				<PastParcels packages={this.state.packages} /> */}
 				{/* <ActionCardContainer iconTitles={this.state.iconTitles} /> */}
 				{/* <FloorCardContainer /> */}
-				<HomeContainer />
+				{/* <HomeContainer /> */}
+				{/* <ParcelModal /> */}
+				<UnitCardContainer info={this.state.info} />
 			</div>
 		);
 	}
