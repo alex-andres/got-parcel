@@ -1,5 +1,5 @@
 import React from 'react';
-import LoginCard from './loginCard';
+import LoginCard from './LoginCard';
 
 
 const HomeContainer = ({ LoginCard }) => {
@@ -14,7 +14,7 @@ const HomeContainer = ({ LoginCard }) => {
 				{LoginCard}
 			</div>
 		</div>
-	)
+	);
 };
 
 export default HomeContainer;

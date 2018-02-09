@@ -24,7 +24,7 @@ const ParcelCard = ({ carrier, trackingNumber, deliveryDate, pickedUp, pickupDat
 				</div>
 			</div>
 		</div>
-	)
+	);
 };
 
 export default ParcelCard;

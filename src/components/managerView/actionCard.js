@@ -14,7 +14,7 @@ const ActionCard = ({ icon, title }) => {
 				</div>
 			</a>
 		</div >
-	)
+	);
 };
 
 export default ActionCard;

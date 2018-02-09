@@ -12,8 +12,8 @@ const UnitCardContainer = ({ info }) => {
 				phoneNumber={resident.phoneNumber}
 				email={resident.email}
 			/>
-		)
-	})
+		);
+	});
 	return (
 		<div>
 			<div class="row valign-wrapper">
@@ -25,7 +25,7 @@ const UnitCardContainer = ({ info }) => {
 				{UnitCards}
 			</div>
 		</div>
-	)
+	);
 };
 
-export default UnitCardContainer();
+export default UnitCardContainer;
