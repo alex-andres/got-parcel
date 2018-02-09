@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NavBar = ({ user }) => {
+const NavBar = ({ handleLogout }) => {
 	return (
 		<div className="navbar-fixed">
 			<nav className="secondary-color-background">
@@ -16,7 +16,7 @@ const NavBar = ({ user }) => {
 							<a className="modal-trigger" href="#profile_modal">Update Profile</a>
 						</li>
 						<li>
-							<a href="#!">Log Out</a>
+							<a href='#!' onClick={() => handleLogout()}>Log Out</a>
 						</li>
 					</ul>
 				</div>
