@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AuthService from './AuthService';
+import AuthService from '../../utils/AuthService';
 
 class LoginCard extends Component {
 	constructor() {

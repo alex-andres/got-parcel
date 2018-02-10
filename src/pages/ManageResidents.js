@@ -1,18 +1,16 @@
 import React from 'react';
-import FloorCard from './floorCard';
+import FloorCard from '../components/Manager/FloorCard';
 
-const floors = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+const floors = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
-
-
-const FloorCardContainer = () => {
+const ManageResidents = () => {
 	const FloorCards = floors.map((floor) => {
 		return (
 			<FloorCard
 				floor={floor}
 			/>
-		)
-	})
+		);
+	});
 	return (
 		<div>
 			<div class="row valign-wrapper">
@@ -29,8 +27,7 @@ const FloorCardContainer = () => {
 				{FloorCards}
 			</div>
 		</div>
-	)
+	);
 };
 
-export default FloorCardContainer;
-
+export default ManageResidents;

@@ -1,0 +1,32 @@
+{
+	"Packages": [{ "unitNumber": "1005", "carrier": "FedEx", "deliveryDate": "9/27/2017", "pickedUp": false, "pickupDate": "", "trackingNumber": "11425366" },
+		{ "unitNumber": "1012", "carrier": "USPS", "deliveryDate": "6/24/2017", "pickedUp": false, "pickupDate": "", "trackingNumber": "14939207" },
+		{ "unitNumber": "1011", "carrier": "UPS", "deliveryDate": "1/31/2018", "pickedUp": false, "pickupDate": "", "trackingNumber": "19718056" },
+		{ "unitNumber": "1009", "carrier": "OnTrac", "deliveryDate": "1/18/2018", "pickedUp": true, "pickupDate": "4/12/2017", "trackingNumber": "18554945" },
+		{ "unitNumber": "1018", "carrier": "UPS", "deliveryDate": "1/25/2018", "pickedUp": false, "pickupDate": "", "trackingNumber": "16263556" },
+		{ "unitNumber": "1008", "carrier": "OnTrac", "deliveryDate": "8/20/2017", "pickedUp": true, "pickupDate": "10/21/2017", "trackingNumber": "18823390" },
+		{ "unitNumber": "1016", "carrier": "UPS", "deliveryDate": "9/13/2017", "pickedUp": true, "pickupDate": "6/26/2017", "trackingNumber": "11893463" },
+		{ "unitNumber": "1001", "carrier": "USPS", "deliveryDate": "1/25/2018", "pickedUp": true, "pickupDate": "1/4/2018", "trackingNumber": "10848997" },
+		{ "unitNumber": "1015", "carrier": "FedEx", "deliveryDate": "2/4/2018", "pickedUp": false, "pickupDate": "12/19/2017", "trackingNumber": "14586924" },
+		{ "unitNumber": "1019", "carrier": "UPS", "deliveryDate": "10/26/2017", "pickedUp": true, "pickupDate": "7/8/2017", "trackingNumber": "17657130" }
+	],
+	"IconTitles": [
+		{ "icon": "add_circle", "title": "New Parcel", "link": "/manager/new-parcel" },
+		{ "icon": "supervisor_account", "title": "Residents", "link": "/manager/residents" },
+		{ "icon": "alarm", "title": "Send Reminder", "link": "/manager/reminders" }
+	],
+	"Info": [
+		{ "unitNumber": 104, "firstName": "Shaun", "lastName": "Crona", "phoneNumber": "949-125-7383", "email": "Weldon48@gmail.comm" },
+		{ "unitNumber": 116, "firstName": "Jeramy", "lastName": "Hartmann", "phoneNumber": "000-049-6818", "email": "Sienna98@hotmail.com" },
+		{ "unitNumber": 126, "firstName": "Talon", "lastName": "Klein", "phoneNumber": "027-660-7425", "email": "Marcelina.Nitzsche@hotmail.com" },
+		{ "unitNumber": 128, "firstName": "Dakota", "lastName": "Borer", "phoneNumber": "118-211-9871", "email": "Bonnie62@gmail.com" },
+		{ "unitNumber": 147, "firstName": "Eveline", "lastName": "Bergstrom", "phoneNumber": "915-056-0246", "email": "Albin62@yahoo.com" },
+		{ "unitNumber": 156, "firstName": "Spencer", "lastName": "Hammes", "phoneNumber": "666-608-8146", "email": "Buck61@hotmail.com" },
+		{ "unitNumber": 159, "firstName": "Korbin", "lastName": "Conn", "phoneNumber": "027-534-2584", "email": "Jessie.Reichel5@yahoo.com" },
+		{ "unitNumber": 169, "firstName": "Keanu", "lastName": "Ryan", "phoneNumber": "957-575-2180", "email": "Gustave17@gmail.com" },
+		{ "unitNumber": 176, "firstName": "Iliana", "lastName": "Thompson", "phoneNumber": "290-191-0096", "email": "Delmer8@yahoo.com" },
+		{ "unitNumber": 185, "firstName": "Ines", "lastName": "Schneider", "phoneNumber": "778-354-4452", "email": "Madeline_Borer@gmail.com" },
+		{ "unitNumber": 186, "firstName": "Cordell", "lastName": "Stanton", "phoneNumber": "287-993-2450", "email": "Coleman.Emmerich10@hotmail.com" },
+		{ "unitNumber": 196, "firstName": "Kellen", "lastName": "Durgan", "phoneNumber": "401-963-1004", "email": "Frances.Senger66@hotmail.com" }
+	]
+}

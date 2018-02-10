@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 const UnitCard = ({ unitNumber, firstName, lastName, phoneNumber, email }) => {
 	return (
 		<div class="col s4">

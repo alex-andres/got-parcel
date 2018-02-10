@@ -1,5 +1,5 @@
 import React from 'react';
-import LoginCard from './LoginCard';
+import LoginCard from '../components/Login/LoginCard';
 
 
 const HomeContainer = () => {

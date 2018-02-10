@@ -1,6 +1,5 @@
 import React from 'react';
-import UnitCard from './unitCard';
-
+import UnitCard from '../components/Manager/UnitCard';
 
 const UnitCardContainer = ({ info }) => {
 	const UnitCards = info.map((resident) => {

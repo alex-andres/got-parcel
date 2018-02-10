@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 class ParcelModal extends Component {
 	constructor(props) {
 		super(props);
@@ -24,8 +25,7 @@ class ParcelModal extends Component {
 
 	render() {
 		return (
-
-			<div className='row'>
+			<div className='row white'>
 				<div className='col s12'>
 					<ul className='stepper horizontal'>
 						<li className='step active'>
@@ -59,7 +59,6 @@ class ParcelModal extends Component {
 					</ul>
 				</div>
 			</div>
-
 		);
 	};
 };

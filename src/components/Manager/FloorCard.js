@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const FloorCard = ({ floor }) => {
 	return (
 		<div className="col s3">
-			<a href="#!">
+			<Link to={`/manager/residents/floor-${floor}`}>
 				<div className="small card hoverable no-select">
 					<div className="card-image card-image-small primary-color-background center">
 						<span className="white-text floor-full-small">{floor}</span>
@@ -12,7 +13,7 @@ const FloorCard = ({ floor }) => {
 						<span className="card-title">Floor {floor}</span>
 					</div>
 				</div>
-			</a>
+			</Link>
 		</div>
 	)
 };

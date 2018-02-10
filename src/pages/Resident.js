@@ -1,7 +1,7 @@
 import React from 'react';
 
-import AwaitingParcels from './AwaitingParcels';
-import PastParcels from './PastParcels';
+import AwaitingParcels from '../components/Resident/AwaitingParcels';
+import PastParcels from '../components/Resident/PastParcels';
 
 const Packages = ({ packages }) => {
 	const Awaiting = [];

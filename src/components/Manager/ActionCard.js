@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const ActionCard = ({ icon, title }) => {
+const ActionCard = ({ icon, title, link }) => {
 	return (
 		<div className="col s4">
-			<a href={(title !== 'New Parcel' ? '#!' : '#parcel_modal')} className={(title === 'New Parcel' ? 'modal-trigger' : '')}>
+			<Link to={link}>
 				<div className="medium card hoverable no-select">
 					<div className="card-image card-image-medium primary-color-background center">
 						<i className="material-icons white-text icon-full-medium">{icon}</i>
@@ -12,8 +13,8 @@ const ActionCard = ({ icon, title }) => {
 						<span className="card-title">{title}</span>
 					</div>
 				</div>
-			</a>
-		</div >
+			</Link>
+		</div>
 	);
 };
 
