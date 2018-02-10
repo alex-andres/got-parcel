@@ -3,7 +3,7 @@ import AuthService from './AuthService';
 
 function WithAuth(AuthComponent) {
 
-	const Auth = new AuthService('http://localhost:8080');
+	const Auth = new AuthService('http://localhost:3001');
 
 	return class AuthWrapped extends Component {
 		constructor(props) {

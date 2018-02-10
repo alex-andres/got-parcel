@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const schema = mongoose.Schema;
+const _ = require('lodash');
 
 const BuildingSchema = new schema({
 
@@ -8,33 +9,36 @@ const BuildingSchema = new schema({
 		required: true,
 		unique: true
 	},
+	floors: {
+		type: Number
+	},
 	units: [{
-		unitNumber: {
+		floor: {
 			type: String,
-			required: true,
-			unique: true
+			required: true
 		},
-		residentId: {
-			type: String
-		}
-	}],
-	packages: [{
 		unitNumber: {
 			type: String,
 			required: true
 		},
-		carrier: {
+		residentId: {
 			type: String,
-			required: true,
-			default: 'Unknown'
+			required: true
+		}
+	}],
+	packages: [{
+		unitNumber: {
+			type: String
+		},
+		carrier: {
+			type: String
 		},
 		deliveryDate: {
 			type: Date,
-			required: true,
-			default: null
 		},
 		pickedUp: {
-			type: Boolean
+			type: Boolean,
+			default: false
 		},
 		pickedUpDate: {
 			type: Date
@@ -43,12 +47,11 @@ const BuildingSchema = new schema({
 			type: Date
 		},
 		trackingNumber: {
-			type: String,
-			required: true
+			type: String
 		}
 	}]
-
 });
-const Building = mongoose.model('buildings', BuildingSchema);
+
+const Building = mongoose.model('Building', BuildingSchema);
 
 module.exports = Building;

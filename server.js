@@ -1,83 +1,142 @@
-/**
- * To get started install
- * express bodyparser jsonwebtoken express-jwt
- * via npm command
- * npm install express bodyparser jsonwebtoken express-jwt --save
- */
+// .env configuration
+require('dotenv').config();
 
 // Bringing all the dependencies in
 const express = require('express');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
-const exjwt = require('express-jwt');
+const _ = require('lodash');
+const User = require('./models/user');
+const Building = require('./models/building');
+const authenticate = require('./middleware/authenticate');
+const client = require('twilio')(process.env.TWILIO_SID, process.env.TWILIO_TOKEN);
+const textFrom = process.env.TWILIO_FROM;
 
-// Instantiating the express app
+const secret = process.env.JWT_SECRET;
+
+// Connecting to mongoose
+mongoose.Promise = global.Promise;
+mongoose.connect(process.env.MONGODB_URI);
+
+// initial configuartoins of express
+const PORT = process.env.PORT || 3001;
 const app = express();
-
-// Setting up bodyParser to use json and set it to req.body
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// See the react auth blog in which cors is required for access
-app.use((req, res, next) => {
-	res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-	res.setHeader('Access-Control-Allow-Headers', 'Content-type,Authorization');
-	next();
+
+const updateBuildingResident = (user) => {
+	console.log(user['_id']);
+	const buildingId = user.buildingId;
+	const unitNumber = user.unitNumber;
+	const floor = unitNumber.replace(/..$/, '');
+	const unit = {
+		residentId: user['_id'],
+		unitNumber,
+		floor
+	};
+	console.log(unit);
+	return Building.update({ buildingId }, { $push: { units: unit } }, { upsert: true }, (err, res) => {
+		!!err ? console.log(`error: ${err}`) : console.log(`Result: ${JSON.stringify(res)}`);
+	});
+};
+
+const notifyResident = (trackingNumber, phone) => {
+	client.messages.create({
+		to: `+1${phone}`,
+		from: '+18582643822',
+		body: `Your Package ${trackingNumber} has been received, please come to the front desk to pick it up.`
+	});
+};
+
+// Signup route
+app.post('/signup', (req, res) => {
+	const body = _.pick(req.body, ['email', 'password', 'firstName', 'lastName', 'role', 'buildingId', 'phone', 'unitNumber']);
+	const user = new User(body);
+
+	user.save().then((result) => {
+		console.log(result);
+		updateBuildingResident(result);
+		return user.generateAuthToken();
+	}).then(token => {
+		res.header('X-Auth', token).send(user);
+	}).catch(e => {
+		res.status(400).send(e);
+	});
 });
 
-// INstantiating the express-jwt middleware
-const jwtMW = exjwt({
-	secret: 'keyboard cat 4 ever'
-});
-
-// MOCKING DB just for test
-let users = [{
-	id: 1,
-	username: 'Negin',
-	password: '123456',
-	role: 'Manager'
-}];
-
-// LOGIN ROUTE
+// Login route
 app.post('/login', (req, res) => {
-	const { username, password } = req.body;
-	// Use your DB ORM logic here to find user and compare password
-	for (let user of users) { // I am using a simple array users which i made above
-		if (username == user.username && password == user.password /* Use your password hash checking logic here !*/) {
-			//If all credentials are correct do this
-			let token = jwt.sign({ id: user.id, username: user.username, role: user.role }, 'keyboard cat 4 ever', { expiresIn: 129600 }); // Sigining the token
-			res.json({
-				sucess: true,
-				err: null,
-				token
-			});
-			break;
-		} else {
-			res.status(401).json({
-				sucess: false,
-				token: null,
-				err: 'Username or password is incorrect'
-			});
+	const body = _.pick(req.body, ['email', 'password']);
+
+	User.findByCredentials(body.email, body.password).then(user => {
+		user.generateAuthToken().then(token => res.header('X-Auth', token).send(user));
+	}).catch(e => {
+		res.status(400).send(e);
+	});
+});
+
+// Authentication route
+app.get('/authenticate', authenticate, (req, res) => {
+	res.send(req.user);
+});
+
+// Logout
+app.delete('/logout', authenticate, (req, res) => {
+	req.user.removeToken(req.token).then(() => {
+		res.status(200).send('Logged Out');
+	}, () => {
+		res.status(400).send('Cannot Logout');
+	});
+});
+
+app.post('/new-parcel', authenticate, (req, res) => {
+	const buildingId = req.body.buildingId;
+	const packageInfo = _.pick(req.body, ['unitNumber', 'carrier', 'trackingNumber', 'deliveryDate']);
+	console.log('info', packageInfo);
+	Building.findOneAndUpdate({ buildingId }, { $push: { packages: packageInfo } }, { upsert: true }).then((resBuilding, err) => {
+		if (err) return res.status(400).send(err);
+		User.findOne({ buildingId, unitNumber: packageInfo.unitNumber }).then((result, error) => {
+			if (error) return res.status(400).send(error);
+			// Send notification
+			// notifyResident(packageInfo.trackingNumber, pack);
+			res.status(200).send('Resident has been notified!');
+		});
+	});
+});
+
+app.get('/all-parcels/:buildingId', authenticate, (req, res) => {
+	Building.find({ buildingId: req.params.buildingId }, 'packages').then((result, error) => {
+		if (error) {
+			console.log(error);
+			return res.status(200).send(error);
 		}
-	}
+		res.status(200).send(result);
+	});
 });
 
-app.get('/', jwtMW /* Using the express jwt MW here */, (req, res) => {
-	res.send('You are authenticated'); //Sending some response when authenticated
+app.get('/buildings/:buildingId', authenticate, (req, res) => {
+	Building.findOne({ buildingId: req.params.buildingId }).then((result, error) => {
+		if (error) {
+			console.log(error);
+			return res.status(400).send(error);
+		}
+		res.status(200).send(result);
+	});
 });
 
-// Error handling 
-app.use(function (err, req, res, next) {
-	if (err.name === 'UnauthorizedError') { // Send the error rather than to show it on the console
-		res.status(401).send(err);
-	} else {
-		next(err);
-	}
+app.post('/new-building/:buildingId', authenticate, (req, res) => {
+	const buildingInfo = _.pick(req.body, ['floors', 'units', 'packages']);
+	Building.findByIdAndUpdate({ buildingId: req.params.buildingId }, { buildingInfo }, { upsert: true }).then((result, error) => {
+		if (error) {
+			console.log(error);
+			return res.status(400).send(error);
+		};
+		res.status(200).send(result);
+	});
 });
 
-// Starting the app on PORT 3000
-const PORT = 8080;
 app.listen(PORT, () => {
-	// eslint-disable-next-line
-	console.log(`Magic happens on port ${PORT}`);
+	console.log(`API server is running on port ${PORT}`);
 });

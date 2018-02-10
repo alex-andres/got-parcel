@@ -1,9 +1,11 @@
 
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect, withRouter } from 'react-router-dom';
 
-import AuthService from '../utils/AuthService';
-import WithAuth from '../utils/WithAuth';
+import AuthServices from '../utils/AuthServices';
+
+const AuthService = new AuthServices('http://localhost:3001');
+
 
 import NavBar from './NavBar';
 import Login from '../pages/Login';
@@ -12,23 +14,45 @@ import Manager from '../pages/Manager';
 import NewParcel from '../pages/NewParcel';
 import ManageResidents from '../pages/ManageResidents';
 import SendReminder from '../pages/SendReminder';
-
+import FirstPage from '../temp/FirstPage';
 import { Packages, IconTitles, Info } from '../temp/MockData.json';
 
-const Auth = new AuthService();
+// const Auth = new AuthService();
 
+// const userAuth = {
+// 	isResident: false,
+// 	isManager: false,
+// 	authenticate(cb) {
+// 		this.isAuthenticated = true;
+// 		setTimeout(cb, 100); // fake async
+// 	},
+// 	signout(cb) {
+// 		this.isAuthenticated = false;
+// 		setTimeout(cb, 100);
+// 	}
+// };
+
+// const PrivateRoute = ({ compnent: Component, ...rest }) => {
+// 	<Route {...rest} render={props =>
+// 		AuthService ?
+// 	}
+// };
 class App extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
+			redirectToReferrer: false,
+			isAuthenticated: false
 			// isModalOn: false
 		};
 	};
 
-	loadLogin() {
-		return <Login />;
-	};
+
+
+	// authenticate() {
+
+	// };
 
 	loadResidet() {
 		return <Resident packages={Packages} />;
@@ -38,9 +62,27 @@ class App extends Component {
 		return <Manager iconTitles={IconTitles} />;
 	};
 
-	// handleClick() {
-	// 	this.setState({ isModalOn: !this.state.isModalOn })
-	// }
+	loadFirstPage() {
+		return (
+			<div className='row'>
+				<FirstPage
+					icon='contacts'
+					title='Resident View'
+					link='/resident'
+				/>
+				<FirstPage
+					icon='vpn_key'
+					title='Manager View'
+					link='/manager'
+				/>
+			</div>
+
+		);
+	}
+
+	// // handleClick() {
+	// // 	this.setState({ isModalOn: !this.state.isModalOn })
+	// // }
 
 	loadReminders() {
 		return <SendReminder packages={Packages} />;
@@ -54,6 +96,7 @@ class App extends Component {
 			<Router>
 				<div>
 					<NavBar />
+					<Route exact path='/' component={() => this.loadFirstPage()} />
 					<Route exact path='/resident' component={() => this.loadResidet()} />
 					<Route exact path='/manager' component={() => this.loadManager()} />
 					<Route exact path='/manager/new-parcel' component={NewParcel} />
