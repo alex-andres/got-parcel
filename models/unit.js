@@ -3,7 +3,10 @@ const schema = mongoose.Schema;
 
 const UnitSchema = new schema({
 	buildingId: String,
-	units: Array
+	units: {
+		type: Array, "default": []
+	}
+
 	/* [ {
 					unitNumber:"123",
 					residentId: "45647576859",
