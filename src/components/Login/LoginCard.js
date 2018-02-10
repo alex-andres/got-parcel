@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import AuthService from '../../utils/AuthService';
+// import AuthService from '../../utils/AuthService';
 
 class LoginCard extends Component {
 	constructor() {
 		super();
 		this.handleChange = this.handleChange.bind(this);
 		this.handleFormSubmit = this.handleFormSubmit.bind(this);
-		this.Auth = new AuthService();
+		// this.Auth = new AuthService();
 	};
 
 	// componentWillMount() {

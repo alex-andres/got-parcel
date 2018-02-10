@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const FirstPage = ({ icon, title, link }) => {
 	return (
-		<div className="col s4 offset-s2">
+		<div className="col s4 offset-s1">
 			<Link to={link}>
 				<div className="medium card hoverable no-select">
 					<div className="card-image card-image-medium primary-color-background center">

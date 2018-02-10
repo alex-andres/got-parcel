@@ -2,9 +2,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect, withRouter } from 'react-router-dom';
 
-import AuthServices from '../utils/AuthServices';
+// import AuthServices from '../utils/AuthServices';
 
-const AuthService = new AuthServices('http://localhost:3001');
+// const AuthService = new AuthServices('http://localhost:3001');
 
 
 import NavBar from './NavBar';
@@ -65,16 +65,21 @@ class App extends Component {
 	loadFirstPage() {
 		return (
 			<div className='row'>
-				<FirstPage
-					icon='contacts'
-					title='Resident View'
-					link='/resident'
-				/>
-				<FirstPage
-					icon='vpn_key'
-					title='Manager View'
-					link='/manager'
-				/>
+				<div className="col s12">
+
+					<div className="row"></div>
+
+					<FirstPage
+						icon='contacts'
+						title='Resident View'
+						link='/resident'
+					/>
+					<FirstPage
+						icon='vpn_key'
+						title='Manager View'
+						link='/manager'
+					/>
+				</div>
 			</div>
 
 		);
@@ -101,7 +106,7 @@ class App extends Component {
 					<Route exact path='/manager' component={() => this.loadManager()} />
 					<Route exact path='/manager/new-parcel' component={NewParcel} />
 					<Route exact path='/manager/residents' component={ManageResidents} />
-					{/* <Route exact path='/manager/residents/floor-:floor' component={} /> */}
+					{/* <Route exact path='/manager/residents/floor-1' component={} /> */}
 					<Route exact path='/manager/reminders' component={() => this.loadReminders()} />
 				</div>
 			</Router>
