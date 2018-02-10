@@ -15,6 +15,7 @@ import NewParcel from '../pages/NewParcel';
 import ManageResidents from '../pages/ManageResidents';
 import SendReminder from '../pages/SendReminder';
 import FirstPage from '../temp/FirstPage';
+import Units from '../pages/Units';
 import { Packages, IconTitles, Info } from '../temp/MockData.json';
 
 // const Auth = new AuthService();
@@ -90,9 +91,16 @@ class App extends Component {
 	// // }
 
 	loadReminders() {
-		return <SendReminder packages={Packages} />;
+		return (
+			<SendReminder packages={Packages} />
+		);
 	};
 
+	loadUnits() {
+		return (
+			<Units info={Info} />
+		);
+	}
 	render() {
 		// const {
 		// 	isModalOn
@@ -106,7 +114,7 @@ class App extends Component {
 					<Route exact path='/manager' component={() => this.loadManager()} />
 					<Route exact path='/manager/new-parcel' component={NewParcel} />
 					<Route exact path='/manager/residents' component={ManageResidents} />
-					{/* <Route exact path='/manager/residents/floor-1' component={} /> */}
+					<Route exact path='/manager/residents/floor-1' component={() => this.loadUnits()} />
 					<Route exact path='/manager/reminders' component={() => this.loadReminders()} />
 				</div>
 			</Router>
