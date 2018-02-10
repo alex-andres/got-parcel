@@ -7,6 +7,16 @@ var SALT_WORK_FACTOR = 10;
 const UserSchema = new schema({
 	email: String,
 	password: String,
+	tokens: [{
+		access: {
+			type: String,
+			required: true
+		},
+		token: {
+			type: String,
+			required: true
+		}
+	}],
 	fname: String,
 	lname: String,
 	phone: {
