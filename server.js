@@ -27,7 +27,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 const updateBuildingResident = (user) => {
-	console.log(user['_id']);
 	const buildingId = user.buildingId;
 	const unitNumber = user.unitNumber;
 	const floor = unitNumber.replace(/..$/, '');
@@ -36,9 +35,8 @@ const updateBuildingResident = (user) => {
 		unitNumber,
 		floor
 	};
-	console.log(unit);
 	return Building.update({ buildingId }, { $push: { units: unit } }, { upsert: true }, (err, res) => {
-		!!err ? console.log(`error: ${err}`) : console.log(`Result: ${JSON.stringify(res)}`);
+		if (err) return console.log(`Adding unit to building: ${err}`);
 	});
 };
 
@@ -56,7 +54,6 @@ app.post('/signup', (req, res) => {
 	const user = new User(body);
 
 	user.save().then((result) => {
-		console.log(result);
 		updateBuildingResident(result);
 		return user.generateAuthToken();
 	}).then(token => {
@@ -94,7 +91,6 @@ app.delete('/logout', authenticate, (req, res) => {
 app.post('/new-parcel', authenticate, (req, res) => {
 	const buildingId = req.body.buildingId;
 	const packageInfo = _.pick(req.body, ['unitNumber', 'carrier', 'trackingNumber', 'deliveryDate']);
-	console.log('info', packageInfo);
 	Building.findOneAndUpdate({ buildingId }, { $push: { packages: packageInfo } }, { upsert: true }).then((resBuilding, err) => {
 		if (err) return res.status(400).send(err);
 		User.findOne({ buildingId, unitNumber: packageInfo.unitNumber }).then((result, error) => {

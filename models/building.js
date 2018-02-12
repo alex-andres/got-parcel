@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const schema = mongoose.Schema;
-const _ = require('lodash');
 
 const BuildingSchema = new schema({
 
@@ -10,7 +9,7 @@ const BuildingSchema = new schema({
 		unique: true
 	},
 	floors: {
-		type: Number
+		type: Array
 	},
 	units: [{
 		floor: {

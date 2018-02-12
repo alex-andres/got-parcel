@@ -11,7 +11,7 @@ function WithAuth(AuthComponent) {
 			this.state = {
 				user: null
 			};
-		};
+		}
 		componentWillMount() {
 			if (!Auth.loggedIn()) {
 				this.props.history.replace('/login');
@@ -27,7 +27,7 @@ function WithAuth(AuthComponent) {
 					this.props.history.replace('/login');
 				};
 			};
-		};
+		}
 
 		render() {
 			if (this.state.user) {
@@ -37,8 +37,8 @@ function WithAuth(AuthComponent) {
 			} else {
 				return null;
 			}
-		};
+		}
 	};
-};
+}
 
 export default WithAuth;

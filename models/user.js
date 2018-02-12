@@ -64,13 +64,13 @@ const UserSchema = new Schema({
 UserSchema.methods.toJSON = function () {
 	const user = this;
 	const userObject = user.toObject();
-	return _.omit(userObject, ['tokens', '_id', '__v', 'password']);
+	return _.pick(userObject, ['_id', 'email', 'role']);
 };
 
 UserSchema.methods.generateAuthToken = function () {
 	const user = this;
 	const access = 'auth';
-	const token = jwt.sign({ _id: user._id.toHexString(), email: user.email, fisrtName: user.firstName, lastName: user.lastName, role: user.role, buildingId: user.buildingId, unitNumber: user.unitNumber, phone: user.phone, access }, secret, { expiresIn: '7d' }).toString();
+	const token = jwt.sign({ _id: user._id, email: user.email, role: user.role }, secret, { expiresIn: '7d' }).toString();
 
 	user.tokens.push({ access, token });
 	return user.save().then(() => {
@@ -89,15 +89,15 @@ UserSchema.methods.removeToken = function (token) {
 
 UserSchema.statics.findByToken = function (token) {
 	const User = this;
-	let verified;
+	let decoded;
 	try {
-		verified = jwt.verify(token, secret);
+		decoded = jwt.verify(token, secret);
 	} catch (e) {
 		return Promise.reject('Token Expired, Please Login!');
-	};
+	}
 
 	return User.findOne({
-		'_id': verified._id,
+		'_id': decoded._id,
 		'tokens.token': token,
 		'tokens.access': 'auth'
 	});
@@ -114,7 +114,7 @@ UserSchema.statics.findByCredentials = function (email, password) {
 					resolve(user);
 				} else {
 					reject('Invalid Email or Password Entered');
-				};
+				}
 			});
 		});
 	});

@@ -7,7 +7,7 @@ class LoginCard extends Component {
 		this.handleChange = this.handleChange.bind(this);
 		this.handleFormSubmit = this.handleFormSubmit.bind(this);
 		// this.Auth = new AuthService();
-	};
+	}
 
 	// componentWillMount() {
 	// 	if (this.Auth.loggedIn()) {
@@ -23,7 +23,7 @@ class LoginCard extends Component {
 		}).catch(err => {
 			console.log(err);
 		});
-	};
+	}
 
 	handleChange(e) {
 		this.setState(
@@ -31,7 +31,7 @@ class LoginCard extends Component {
 				[e.target.name]: e.target.value
 			}
 		);
-	};
+	}
 
 	render() {
 		return (
@@ -67,7 +67,7 @@ class LoginCard extends Component {
 				</div>
 			</div>
 		);
-	};
-};
+	}
+}
 
 export default LoginCard;
